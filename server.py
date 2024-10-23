@@ -25,8 +25,8 @@ def upload_image():
 
         # Return the response from the OCR API
         return jsonify(as_dict), status_code 
-    except requests.exceptions.RequestException as e:
-        return jsonify({'error': str(e)}), 500
+    except (requests.exceptions.RequestException, TypeError) as e :
+        return jsonify({'error': str(e), 'gula': 0, 'lemak': 0, 'garam': 0}), 200
 
 @app.route('/grade', methods=['GET'])
 def grade():

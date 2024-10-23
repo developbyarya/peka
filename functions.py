@@ -671,7 +671,6 @@ def get_sugar(lines):
   found = None
   for line in lines:
       if (bool(re.search(target, line.get("LineText"), re.IGNORECASE))):
-          print ("found", line)
           if (grams := extract_number(correct_misread(line.get("LineText")))):
              return grams, extract_unit(correct_misread(line.get("LineText")))
           line_pos_h = line.get("Words")[0].get("Top")
@@ -701,7 +700,6 @@ def get_natrium(lines):
           if (grams := extract_number(correct_misread(line.get("LineText")))):
              return grams, extract_unit(correct_misread(line.get("LineText")))
           line_pos_h = line.get("Words")[0].get("Top")
-          print("found", line)
           # Find closest element by height
           found = None;
           last_check_dist = float('inf')
