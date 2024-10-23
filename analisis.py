@@ -2,7 +2,7 @@ gula_min_category = {
     "A": 1,
     "B": 5,
     "C": 10,
-    "D": "else"
+    "D": 999
 }
 
 lemak_min_category = {

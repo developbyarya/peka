@@ -30,9 +30,9 @@ def upload_image():
 
 @app.route('/grade', methods=['GET'])
 def grade():
-    gula = request.args.get("sugar")
-    lemak = request.args.get("fat")
-    garam = request.args.get("garam")
+    gula = int(request.args.get("sugar"))
+    lemak = int(request.args.get("fat"))
+    garam = int(request.args.get("garam"))
 
     if not gula or not lemak or not garam:
         return jsonify({"error": "paramter not complete"}), 400
