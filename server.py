@@ -10,17 +10,17 @@ app = Flask(__name__)
 @app.route('/upload', methods=['POST'])
 def upload_image():
     # Check if the image is part of the request
-    if 'url' not in request.form:
-        return jsonify({'error': 'No url part'}), 400
-
-    file = request.form['url']
-
-    # If the user does not select a file, the browser submits an empty file
-    if file == "" or file is None:
-        return jsonify({'error': 'url empty'}), 400
 
     # Send the file to the OCR API
     try:
+        if 'url' not in request.form:
+            return jsonify({'error': 'No url part'}), 400
+
+        file = request.form['url']
+
+        # If the user does not select a file, the browser submits an empty file
+        if file == "" or file is None:
+            return jsonify({'error': 'url empty'}), 400
         as_dict, status_code = send_request.send_reqeust(file)
 
         # Return the response from the OCR API

@@ -12,13 +12,10 @@ def process_result_as_dict(lines):
     sugar = functions.get_sugar(lines)
     lemak = functions.get_fat(lines)
     garam = functions.get_natrium(lines)
-    sugar = sugar if sugar is not None else 0
-    lemak = lemak if lemak is not None else 0
-    garam = garam if garam is not None else 0
     return {
-        "sugar":  ((sugar[0] / 10.0) if sugar[1] == "mg" else sugar[0]) if sugar is not None else None,
-        "lemak": ((lemak[0] / 10.0) if lemak[1] == "mg" else lemak[0]) if lemak is not None else None,
-        "garam": ((garam[0] / 10.0) if garam[1] == "mg" else garam[0]) if garam is not None else None,
+        "sugar":  ((sugar[0] / 10.0) if sugar[1] == "mg" else sugar[0]) if sugar is not None else 0,
+        "lemak": ((lemak[0] / 10.0) if lemak[1] == "mg" else lemak[0]) if lemak is not None else 0,
+        "garam": ((garam[0] / 10.0) if garam[1] == "mg" else garam[0]) if garam is not None else 0,
     } 
 
 def send_reqeust(img_link):
