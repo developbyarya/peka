@@ -9,7 +9,7 @@ lemak_min_category = {
     "A": .7,
     "B": 1.2,
     "C": 2.8,
-    "D": "else"
+    "D": 999
 }
 
 code = ["A", "B", "C", "D"]

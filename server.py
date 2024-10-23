@@ -30,14 +30,19 @@ def upload_image():
 
 @app.route('/grade', methods=['GET'])
 def grade():
-    gula = request.args.get("sugar")
-    lemak = request.args.get("fat")
-    garam = request.args.get("garam")
+    try:
+        gula = float(request.args.get("sugar"))
+        lemak = float(request.args.get("fat"))
+        garam = float(request.args.get("garam"))
+    except (TypeError, ValueError):
+        return jsonify({"error": "parameters must be numbers"}), 400
 
-    if  gula is None or lemak is None or garam is None:
-        return jsonify({"error": "paramter not complete"}), 400
+    try:
+        hasil = analisis.analisis(gula, lemak, garam)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500  # Return the exception message
     
-    hasil = analisis.analisis(gula, lemak, garam) 
     return jsonify({"hasil": hasil}), 200
+
 if __name__ == '__main__':
     app.run(debug=True)
